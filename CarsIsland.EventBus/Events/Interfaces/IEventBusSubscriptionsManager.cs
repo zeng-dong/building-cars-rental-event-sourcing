@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CarsIsland.EventBus.Events.Interfaces
 {
@@ -15,6 +16,17 @@ namespace CarsIsland.EventBus.Events.Interfaces
         void RemoveSubscription<T, TH>()
            where TH : IIntegrationEventHandler<T>
            where T : IntegrationEvent;
+
+        bool HasSubscriptionsForEvent<T>() where T : IntegrationEvent;
+        bool HasSubscriptionsForEvent(string eventName);
+
+        void Clear();
+
+        IEnumerable<SubscriptionInfo> GetHandlersForEvent<T>() where T : IntegrationEvent;
+
+        IEnumerable<SubscriptionInfo> GetHandlersForEvent(string eventName);
+
+        string GetEventKey<T>();
 
 
     }
