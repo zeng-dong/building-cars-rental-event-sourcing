@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.EventBus", "CarsIsland.EventBus\CarsIsland.EventBus.csproj", "{0405CA7F-D496-417B-8F4D-1C08E8C47386}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsIsland.EventBus", "CarsIsland.EventBus\CarsIsland.EventBus.csproj", "{0405CA7F-D496-417B-8F4D-1C08E8C47386}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{DDAA4BEE-BC92-4990-939B-380B73F0AFAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.Catalog.Domain", "CarsIsland.Catalog.Domain\CarsIsland.Catalog.Domain.csproj", "{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +21,17 @@ Global
 		{0405CA7F-D496-417B-8F4D-1C08E8C47386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0405CA7F-D496-417B-8F4D-1C08E8C47386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0405CA7F-D496-417B-8F4D-1C08E8C47386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0405CA7F-D496-417B-8F4D-1C08E8C47386} = {DDAA4BEE-BC92-4990-939B-380B73F0AFAF}
+		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7} = {E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA04FBF0-1E0F-4AC7-BF5A-2AB41999110A}
