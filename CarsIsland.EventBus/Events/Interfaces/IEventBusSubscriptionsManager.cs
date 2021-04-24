@@ -20,6 +20,8 @@ namespace CarsIsland.EventBus.Events.Interfaces
         bool HasSubscriptionsForEvent<T>() where T : IntegrationEvent;
         bool HasSubscriptionsForEvent(string eventName);
 
+        Type GetEventTypeByName(string eventName);
+
         void Clear();
 
         IEnumerable<SubscriptionInfo> GetHandlersForEvent<T>() where T : IntegrationEvent;
