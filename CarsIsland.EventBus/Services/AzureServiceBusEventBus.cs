@@ -34,9 +34,21 @@ namespace CarsIsland.EventBus.Services
         }
 
 
-        public Task PublishAsync(IntegrationEvent evnt)
+        public async Task PublishAsync(IntegrationEvent evnt)
         {
-            throw new NotImplementedException();
+            var enventName = evnt.GetType().Name;
+            var jsonMessage = JsonConvert.SerializeObject(evnt);
+            var body = Encoding.UTF8.GetBytes(jsonMessage);
+
+            var message = new Message
+            {
+                MessageId = Guid.NewGuid().ToString(),
+                Body = body,
+                Label = enventName
+            };
+
+            var topicClient = _serviceBusConnectionManagementService.CreateTopicClient();
+            await topicClient.SendAsync(message);
         }
 
         public async Task SetupAsync()
@@ -53,18 +65,50 @@ namespace CarsIsland.EventBus.Services
             }
         }
 
-        public Task SubscibeAsync<T, TH>()
+        public async Task SubscibeAsync<T, TH>()
             where T : IntegrationEvent
             where TH : IIntegrationEventHandler<T>
         {
-            throw new NotImplementedException();
+            var eventName = typeof(T).Name;
+
+            var containsKey = _subscriptionManager.HasSubscriptionsForEvent<T>();
+            if (!containsKey)
+            {
+                try
+                {
+                    await _subscriptionClient.AddRuleAsync(new RuleDescription
+                    {
+                        Filter = new CorrelationFilter { Label = eventName },
+                        Name = eventName
+                    });
+                }
+                catch (ServiceBusException)
+                {
+                    _logger.LogWarning("The messaging entity '{eventName} already exists.", eventName);
+                }
+            }
+
+            _logger.LogInformation("Subscibing to event '{EventName}' with '{EventHandler}'", eventName, typeof(TH).Name);
+            _subscriptionManager.AddSubscription<T, TH>();
         }
 
-        public Task UnsubscribeAsync<T, TH>()
+        public async Task UnsubscribeAsync<T, TH>()
             where T : IntegrationEvent
             where TH : IIntegrationEventHandler<T>
         {
-            throw new NotImplementedException();
+            var eventName = typeof(T).Name;
+
+            try
+            {
+                await _subscriptionClient.RemoveRuleAsync(eventName);
+            }
+            catch (MessagingEntityNotFoundException)
+            {
+                _logger.LogWarning("The messaging entity '{eventName}' could not be found.", eventName);
+            }
+
+            _logger.LogInformation("Unsubscribing from event '{EventName}'", eventName);
+            _subscriptionManager.RemoveSubscription<T, TH>();
         }
 
         private void RegisterSubscriptionClientMessageHandler()
