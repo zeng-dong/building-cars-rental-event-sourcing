@@ -9,7 +9,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarsIsland.EventBus.Services
+namespace CarsIsland.EventBus
 {
     public class AzureServiceBusEventBus : IEventBus
     {
