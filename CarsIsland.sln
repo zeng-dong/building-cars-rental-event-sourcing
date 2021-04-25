@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{E3FC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.Catalog.Domain", "CarsIsland.Catalog.Domain\CarsIsland.Catalog.Domain.csproj", "{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.Catalog.Infrastructure", "CarsIsland.Catalog.Infrastructure\CarsIsland.Catalog.Infrastructure.csproj", "{230E847E-AAB0-4C50-BB7C-6959AE36B28D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{230E847E-AAB0-4C50-BB7C-6959AE36B28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{230E847E-AAB0-4C50-BB7C-6959AE36B28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{230E847E-AAB0-4C50-BB7C-6959AE36B28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{230E847E-AAB0-4C50-BB7C-6959AE36B28D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0405CA7F-D496-417B-8F4D-1C08E8C47386} = {DDAA4BEE-BC92-4990-939B-380B73F0AFAF}
 		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7} = {E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}
+		{230E847E-AAB0-4C50-BB7C-6959AE36B28D} = {E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA04FBF0-1E0F-4AC7-BF5A-2AB41999110A}
