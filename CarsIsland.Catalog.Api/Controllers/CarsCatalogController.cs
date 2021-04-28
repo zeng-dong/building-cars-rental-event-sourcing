@@ -1,4 +1,5 @@
-﻿using CarsIsland.Catalog.Domain.Model;
+﻿using CarsIsland.Catalog.Api.Core.IntegrationEvents.Events;
+using CarsIsland.Catalog.Domain.Model;
 using CarsIsland.Catalog.Infrastructure.Repositories;
 using CarsIsland.Catalog.Infrastructure.Services.Integration.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +56,42 @@ namespace CarsIsland.Catalog.Api.Controllers
             return CreatedAtAction(nameof(GetCarAsync), new { id = addedCar.Entity.Id });
         }
 
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        public async Task<ActionResult> UpdateCarAsync([FromBody] Car carToUpdate)
+        {
+            var existingCarFromTheCatalog = await _carCatalogDbContext.Cars.SingleOrDefaultAsync(i => i.Id == carToUpdate.Id);
 
+            if (existingCarFromTheCatalog == null)
+            {
+                return NotFound(new { Message = $"Car with id {carToUpdate.Id} not found." });
+            }
+
+            else
+            {
+                var oldPricePerDay = existingCarFromTheCatalog.PricePerDay;
+                var hasPricePerDayChanged = existingCarFromTheCatalog.PricePerDay != carToUpdate.PricePerDay;
+                existingCarFromTheCatalog.PricePerDay = carToUpdate.PricePerDay;
+
+                _carCatalogDbContext.Cars.Update(existingCarFromTheCatalog);
+
+                if (hasPricePerDayChanged)
+                {
+                    var pricePerDayChangedEvent = new CarPricePerDayChangedIntegrationEvent(existingCarFromTheCatalog.Id,
+                                                                                            existingCarFromTheCatalog.PricePerDay,
+                                                                                            oldPricePerDay);
+
+                    await _catalogIntegrationEventService.AddAndSaveEventAsync(pricePerDayChangedEvent);
+                    await _catalogIntegrationEventService.PublishEventsThroughEventBusAsync(pricePerDayChangedEvent);
+                }
+
+                else
+                {
+                    await _carCatalogDbContext.SaveChangesAsync();
+                }
+                return NoContent();
+            }
+        }
     }
 }
