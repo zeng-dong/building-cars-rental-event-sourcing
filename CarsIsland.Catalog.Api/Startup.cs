@@ -40,6 +40,8 @@ namespace CarsIsland.Catalog.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwaggerServices();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
