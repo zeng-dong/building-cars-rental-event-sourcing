@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace CarsIsland.EventBus
 {
-    class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManager
+    public class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManager
     {
         private readonly Dictionary<string, List<SubscriptionInfo>> _handlers;
         private readonly List<Type> _eventTypes;
