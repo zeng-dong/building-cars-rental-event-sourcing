@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CarsIsland.Catalog.Domain.Repositories.Interfaces;
+using CarsIsland.Catalog.Infrastructure.Configuration.Interfaces;
+using CarsIsland.Catalog.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Reflection;
 
 namespace CarsIsland.Catalog.Api.Core.DependencyInjection
 {
@@ -6,6 +12,31 @@ namespace CarsIsland.Catalog.Api.Core.DependencyInjection
     {
         public static IServiceCollection AddDataService(this IServiceCollection services)
         {
+            var serviceProvider = services.BuildServiceProvider();
+            var sqlDbConfiguration = serviceProvider.GetRequiredService<ISqlDbDataServiceConfiguration>();
+
+            services.AddDbContext<CarCatalogDbContext>(options =>
+            {
+                options.UseSqlServer(sqlDbConfiguration.ConnectionString,
+                                     sqlServerOptionsAction: sqlOptions =>
+                                     {
+                                         sqlOptions.MigrationsAssembly(typeof(CarCatalogDbContext).GetTypeInfo().Assembly.GetName().Name);
+                                         sqlOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), null);
+                                     });
+            });
+
+            // todo: eventsourcing later
+            //services.AddDbContext<EventLogContext>(options =>
+            //{
+            //    options.UseSqlServer(sqlDbConfiguration.ConnectionString,
+            //                         sqlServerOptionsAction: sqlOptions =>
+            //                         {
+            //                             sqlOptions.MigrationsAssembly(typeof(CarCatalogDbContext).GetTypeInfo().Assembly.GetName().Name);
+            //                             sqlOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), null);
+            //                         });
+            //});
+
+            services.AddScoped<ICarsCatalogRepository, CarCatalogRepository>();
 
             return services;
         }
