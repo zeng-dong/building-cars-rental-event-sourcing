@@ -22,6 +22,7 @@ namespace CarsIsland.Catalog.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAppConfiguration(Configuration);
+            services.AddDataService();
 
             services.AddSwagger();
             services.AddModelValidators();
