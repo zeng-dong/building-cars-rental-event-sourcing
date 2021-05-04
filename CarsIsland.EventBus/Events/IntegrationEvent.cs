@@ -8,12 +8,12 @@ namespace CarsIsland.EventBus.Events
         [JsonConstructor]
         public IntegrationEvent()
         {
-            ID = Guid.NewGuid();
+            Id = Guid.NewGuid();
             CreationDate = DateTime.UtcNow;
         }
 
         [JsonProperty]
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
         [JsonProperty]
         public DateTime CreationDate { get; private set; }
     }
