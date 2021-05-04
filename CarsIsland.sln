@@ -9,11 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.Catalog.Domain", "CarsIsland.Catalog.Domain\CarsIsland.Catalog.Domain.csproj", "{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsIsland.Catalog.Domain", "CarsIsland.Catalog.Domain\CarsIsland.Catalog.Domain.csproj", "{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.Catalog.Infrastructure", "CarsIsland.Catalog.Infrastructure\CarsIsland.Catalog.Infrastructure.csproj", "{230E847E-AAB0-4C50-BB7C-6959AE36B28D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsIsland.Catalog.Infrastructure", "CarsIsland.Catalog.Infrastructure\CarsIsland.Catalog.Infrastructure.csproj", "{230E847E-AAB0-4C50-BB7C-6959AE36B28D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.Catalog.Api", "CarsIsland.Catalog.Api\CarsIsland.Catalog.Api.csproj", "{2A4623C7-AE85-43C9-BF8D-9167B476FE7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsIsland.Catalog.Api", "CarsIsland.Catalog.Api\CarsIsland.Catalog.Api.csproj", "{2A4623C7-AE85-43C9-BF8D-9167B476FE7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsIsland.EventLog", "CarsIsland.EventLog\CarsIsland.EventLog.csproj", "{10A84932-1C32-4235-933C-E97E9B911EB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{2A4623C7-AE85-43C9-BF8D-9167B476FE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A4623C7-AE85-43C9-BF8D-9167B476FE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A4623C7-AE85-43C9-BF8D-9167B476FE7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A84932-1C32-4235-933C-E97E9B911EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A84932-1C32-4235-933C-E97E9B911EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A84932-1C32-4235-933C-E97E9B911EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A84932-1C32-4235-933C-E97E9B911EB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{BC50EEDC-A7DA-4334-84C4-C8AFFF59B5C7} = {E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}
 		{230E847E-AAB0-4C50-BB7C-6959AE36B28D} = {E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}
 		{2A4623C7-AE85-43C9-BF8D-9167B476FE7F} = {E3FCDA3F-8266-4623-9F5F-F45F1731F5E0}
+		{10A84932-1C32-4235-933C-E97E9B911EB9} = {DDAA4BEE-BC92-4990-939B-380B73F0AFAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA04FBF0-1E0F-4AC7-BF5A-2AB41999110A}
