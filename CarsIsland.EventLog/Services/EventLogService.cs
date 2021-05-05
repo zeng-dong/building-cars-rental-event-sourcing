@@ -4,12 +4,17 @@ using CarsIsland.EventLog.Services.Interfaces;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Threading.Tasks;
 
 namespace CarsIsland.EventLog.Services
 {
     public class EventLogService : IEventLogService
     {
+        private readonly EventLogContext _integrationEventLogContext;
+        private readonly DbConnection _dbConnection;
+        private readonly List<Type> _eventTypes;
+
         public Task MarkEventAsFailedAsync(Guid eventId)
         {
             throw new NotImplementedException();
